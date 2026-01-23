@@ -6,26 +6,15 @@ interface ChangelogEntry {
   date: string
   subtitle: string
   sections: { title: string; items: string[] }[]
+  patch?: { version: string; note: string }
 }
 
 const CHANGELOG: ChangelogEntry[] = [
   {
-    version: 'v1.1.3',
-    date: '2026-01-23',
-    subtitle: 'New app icon',
-    sections: [
-      {
-        title: 'Added',
-        items: [
-          'Updated app icon to retro 16-bit pixel sailboat',
-        ],
-      },
-    ],
-  },
-  {
     version: 'v1.1.2',
     date: '2026-01-21',
     subtitle: 'UI improvements and bug fixes',
+    patch: { version: 'v1.1.3', note: 'New pixel sailboat app icon' },
     sections: [
       {
         title: 'Added',
@@ -292,6 +281,11 @@ export function Changelog() {
                 ▶
               </span>
               <span className="font-pixel text-[0.55rem] text-blue">{entry.version}</span>
+              {entry.patch && (
+                <span className="font-pixel text-[0.35rem] text-orange/70 border border-orange/30 px-1.5 py-0.5 rounded-sm hidden sm:inline">
+                  {entry.patch.version}: {entry.patch.note}
+                </span>
+              )}
               <span className="text-retro-gray text-[0.9rem] flex-1">{entry.subtitle}</span>
               <span className="text-retro-gray/50 text-[0.8rem] hidden sm:block">{entry.date}</span>
               {i === 0 && (
