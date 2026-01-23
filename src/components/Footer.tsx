@@ -1,3 +1,26 @@
+function playSecretChime() {
+  const ctx = new AudioContext()
+  // 3 descending arpeggios, then one ascending resolve
+  const pattern = [
+    { freq: 880.00, time: 0,    dur: 0.15 }, // A5 ↓
+    { freq: 739.99, time: 0.12, dur: 0.15 }, // F#5 ↓
+    { freq: 587.33, time: 0.24, dur: 0.15 }, // D5 ↓
+    { freq: 987.77, time: 0.44, dur: 0.4  }, // B5 ↑ (resolve, held longer)
+  ]
+  pattern.forEach(({ freq, time, dur }) => {
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.type = 'square'
+    osc.frequency.value = freq
+    gain.gain.setValueAtTime(0.09, ctx.currentTime + time)
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + time + dur)
+    osc.connect(gain)
+    gain.connect(ctx.destination)
+    osc.start(ctx.currentTime + time)
+    osc.stop(ctx.currentTime + time + dur)
+  })
+}
+
 export function Footer() {
   const barCount = 20
   const bars = Array.from({ length: barCount }, (_, i) => {
@@ -24,7 +47,7 @@ export function Footer() {
       </div>
 
       {/* a familiar shape */}
-      <div className="flex justify-center mb-6 opacity-15">
+      <div className="flex justify-center mb-6 opacity-15 cursor-pointer hover:opacity-30 transition-opacity" onClick={playSecretChime}>
         <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
           {/* Top triangle */}
           <polygon points="12,0 18,11 6,11" fill="#ff8c00" />
