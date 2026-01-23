@@ -27,7 +27,12 @@ export function Nav() {
       {/* Orange sweep accents on nav corners */}
       <div className={`absolute bottom-0 left-0 h-[4px] bg-orange transition-all duration-300 ${scrolled ? 'w-8' : 'w-5'}`} />
       <div className={`absolute bottom-0 right-0 h-[4px] bg-orange transition-all duration-300 ${scrolled ? 'w-8' : 'w-5'}`} />
-      <div className="font-pixel text-[0.75rem] text-orange flex items-center gap-3" style={{ textShadow: '2px 2px 0 #8b1a1a' }}>
+      <a
+        href="#"
+        onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+        className="font-pixel text-[0.75rem] flex items-center gap-3 no-underline cursor-pointer"
+        style={{ textShadow: '2px 2px 0 #8b1a1a' }}
+      >
         <svg className={`transition-all duration-300 ${scrolled ? 'w-5 h-5' : 'w-6 h-6'}`} viewBox="0 0 32 32" fill="none">
           {/* Mast - red */}
           <rect x="11" y="4" width="1" height="17" fill="#8b1a1a" />
@@ -56,8 +61,8 @@ export function Nav() {
           <rect x="2" y="27" width="28" height="1" fill="url(#stripeGlow)" />
           <rect x="2" y="29" width="28" height="1" fill="url(#stripeGlow)" />
         </svg>
-        SAILSWIFT
-      </div>
+        <span><span className="text-red-light">SAIL</span><span className="text-orange">SWIFT</span></span>
+      </a>
       <div className="hidden sm:flex gap-1">
         <a href="#features" className="font-pixel text-[0.55rem] text-retro-white px-3.5 py-2 border-2 border-transparent hover:text-orange hover:border-orange transition-all">
           FEATURES
