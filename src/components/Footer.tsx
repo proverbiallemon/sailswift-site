@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 function playSecretChime() {
   const ctx = new AudioContext()
   // 3 descending arpeggios, then one ascending resolve
@@ -22,6 +24,14 @@ function playSecretChime() {
 }
 
 export function Footer() {
+  const [shimmer, setShimmer] = useState(false)
+
+  const handleTriforceClick = () => {
+    playSecretChime()
+    setShimmer(true)
+    setTimeout(() => setShimmer(false), 800)
+  }
+
   const barCount = 20
   const bars = Array.from({ length: barCount }, (_, i) => {
     const progress = i / (barCount - 1)
@@ -47,8 +57,11 @@ export function Footer() {
       </div>
 
       {/* a familiar shape */}
-      <div className="flex justify-center mb-6 opacity-15 cursor-pointer hover:opacity-30 transition-opacity" onClick={playSecretChime}>
-        <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
+      <div
+        className={`flex justify-center mb-6 cursor-pointer transition-all duration-300 ${shimmer ? 'opacity-90 drop-shadow-[0_0_8px_#ff8c00]' : 'opacity-15 hover:opacity-30'}`}
+        onClick={handleTriforceClick}
+      >
+        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" className={shimmer ? 'animate-[triforce-shimmer_0.8s_ease-out]' : ''}>
           {/* Top triangle */}
           <polygon points="12,0 18,11 6,11" fill="#ff8c00" />
           {/* Bottom-left triangle */}
