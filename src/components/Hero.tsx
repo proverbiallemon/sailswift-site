@@ -5,7 +5,7 @@ import { AppMockup } from './AppMockup'
 import { BlueStripes } from './BlueStripes'
 
 // you're still reading this? go mod something
-const TYPED_TEXT = 'Browse GameBanana, install mods with one click, manage profiles and load order. Built with Swift for Mac.'
+const TYPED_TEXT = 'Browse, download, and manage Ship of Harkinian mods with one click. Profiles, load order, and auto-updates. Built with Swift for Mac.'
 
 export function Hero() {
   const [displayText, setDisplayText] = useState('')
