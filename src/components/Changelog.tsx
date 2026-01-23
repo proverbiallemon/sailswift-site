@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { BlueStripes } from './BlueStripes'
 
 interface ChangelogEntry {
   version: string
@@ -242,14 +241,14 @@ export function Changelog() {
   return (
     <section id="changelog" className="py-24 px-6 max-w-[800px] mx-auto">
       <motion.h2
-        className="font-pixel text-[clamp(0.8rem,2vw,1.1rem)] text-center text-orange mb-4"
+        className="font-pixel text-[clamp(0.8rem,2vw,1.1rem)] text-center mb-4"
         style={{ textShadow: '2px 2px 0 #8b1a1a' }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5 }}
       >
-        CHANGELOG
+        <span className="text-red-light">CHANGE</span><span className="text-orange">LOG</span>
       </motion.h2>
       <motion.p
         className="text-center text-retro-gray mb-12 text-[1.2rem]"
@@ -323,7 +322,6 @@ export function Changelog() {
         ))}
       </div>
 
-      <BlueStripes className="mt-20 px-4" />
     </section>
   )
 }

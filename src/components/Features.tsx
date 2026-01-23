@@ -39,14 +39,14 @@ export function Features() {
   return (
     <section id="features" className="py-24 px-6 max-w-[1000px] mx-auto">
       <motion.h2
-        className="font-pixel text-[clamp(0.8rem,2vw,1.1rem)] text-center text-orange mb-4"
+        className="font-pixel text-[clamp(0.8rem,2vw,1.1rem)] text-center mb-4"
         style={{ textShadow: '2px 2px 0 #8b1a1a' }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5 }}
       >
-        FEATURES
+        <span className="text-red-light">FEAT</span><span className="text-orange">URES</span>
       </motion.h2>
       <motion.p
         className="text-center text-retro-gray mb-16 text-[1.2rem]"
@@ -71,7 +71,7 @@ export function Features() {
             <div className="feature-icon-box w-8 h-8 bg-blue flex items-center justify-center mb-3">
               <feature.icon size={16} className="text-retro-white" />
             </div>
-            <h3 className="font-pixel text-[0.6rem] text-red-light mb-3 leading-relaxed">
+            <h3 className={`font-pixel text-[0.6rem] mb-3 leading-relaxed ${i % 2 === 0 ? 'text-red-light' : 'text-orange'}`}>
               {feature.title}
             </h3>
             <p className="text-retro-gray text-[1.05rem] leading-normal">

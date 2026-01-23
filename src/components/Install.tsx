@@ -10,7 +10,7 @@ export function Install() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-pixel text-[0.9rem] text-orange mb-2">GET IT NOW</h2>
+        <h2 className="font-pixel text-[0.9rem] mb-2"><span className="text-red-light">GET IT</span> <span className="text-orange">NOW</span></h2>
         <p className="text-retro-gray mb-7 text-[1.1rem]">macOS 13.0+ required. Free &amp; open source.</p>
 
         <div className="flex flex-col gap-3 text-left">
