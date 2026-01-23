@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #0a0a0a;
+  --color-dark: #1a1a2e;
+  --color-red-light: #f07070;
+  --color-red: #e05050;
+  --color-red-dark: #8b1a1a;
+  --color-blue: #0099ff;
+  --color-blue-dark: #0066cc;
+  --color-blue-deeper: #003366;
+  --color-orange: #ff8c00;
+  --color-orange-light: #ffaa33;
+  --color-pink: #f0a0a0;
+  --color-retro-white: #f0f0f0;
+  --color-retro-gray: #888888;
+
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-terminal: 'VT323', monospace;
+}
+
+body {
+  font-family: var(--font-terminal);
+  background: var(--color-black);
+  color: var(--color-retro-white);
+  font-size: 20px;
+  overflow-x: hidden;
+}
+
+/* the cake is a lie, but the scanlines are real */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.cursor-blink::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.pixel-raised {
+  border: 4px solid;
+  border-color: var(--color-retro-white) var(--color-retro-gray) var(--color-retro-gray) var(--color-retro-white);
+}
+
+.pixel-inset {
+  border: 3px solid;
+  border-color: var(--color-retro-gray) var(--color-retro-white) var(--color-retro-white) var(--color-retro-gray);
+}
+
+.pixel-orange {
+  border: 6px solid;
+  border-color: var(--color-orange) var(--color-orange-light) var(--color-orange-light) var(--color-orange);
+}
+
+.btn-pixel-primary {
+  border: 4px solid;
+  border-color: var(--color-red-light) var(--color-red-dark) var(--color-red-dark) var(--color-red-light);
+}
+
+.btn-pixel-primary:hover {
+  background: var(--color-red-light);
+}
+
+.dot-red {
+  border: 2px solid;
+  border-color: var(--color-red-light) var(--color-red-dark) var(--color-red-dark) var(--color-red-light);
+}
+
+.dot-yellow {
+  border: 2px solid;
+  border-color: var(--color-orange-light) #996600 #996600 var(--color-orange-light);
+}
+
+.dot-green {
+  border: 2px solid;
+  border-color: #44ff66 #1a8830 #1a8830 #44ff66;
+}
+
+.indicator-on {
+  border: 2px solid;
+  border-color: #44ff66 #1a8830 #1a8830 #44ff66;
+}
+
+.indicator-off {
+  border: 2px solid;
+  border-color: #aaa #555 #555 #aaa;
+}
+
+.feature-icon-box {
+  border: 3px solid;
+  border-color: #66ccff var(--color-blue-dark) var(--color-blue-dark) #66ccff;
+}
+
+/* Bobbing boat animation */
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(1deg); }
+  75% { transform: translateY(3px) rotate(-0.5deg); }
+}
+
+.animate-bob {
+  animation: bob 4s ease-in-out infinite;
+}
+
+/* CRT flicker */
+@keyframes crt-flicker {
+  0%, 95%, 100% { opacity: 1; filter: brightness(1); }
+  96% { opacity: 0.85; filter: brightness(1.2); }
+  97% { opacity: 1; filter: brightness(0.9); }
+  98% { opacity: 0.92; filter: brightness(1.1); }
+}
+
+.crt-flicker {
+  animation: crt-flicker 8s linear infinite;
+}
+
+/* CRT power-on glow */
+.crt-glow {
+  box-shadow: 0 0 15px rgba(0, 153, 255, 0.15), inset 0 0 30px rgba(0, 153, 255, 0.05);
+}
+
+/* Glitch text effect */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text:hover {
+  animation: glitch-skew 0.5s ease-in-out;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text:hover::before {
+  animation: glitch-1 0.5s ease-in-out;
+  color: #0099ff;
+  text-shadow: 3px 3px 0 #0066cc;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  opacity: 0.8;
+}
+
+.glitch-text:hover::after {
+  animation: glitch-2 0.5s ease-in-out;
+  color: #e05050;
+  text-shadow: -3px 3px 0 #8b1a1a;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  opacity: 0.8;
+}
+
+@keyframes glitch-skew {
+  0%, 100% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(1deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(0.5deg); }
+}
+
+@keyframes glitch-1 {
+  0% { transform: translate(0); opacity: 0; }
+  20% { transform: translate(-3px, 2px); opacity: 0.8; }
+  40% { transform: translate(3px, -1px); opacity: 0.8; }
+  60% { transform: translate(-2px, 1px); opacity: 0.8; }
+  80% { transform: translate(2px, -2px); opacity: 0.8; }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+@keyframes glitch-2 {
+  0% { transform: translate(0); opacity: 0; }
+  20% { transform: translate(3px, -2px); opacity: 0.8; }
+  40% { transform: translate(-3px, 1px); opacity: 0.8; }
+  60% { transform: translate(2px, -1px); opacity: 0.8; }
+  80% { transform: translate(-2px, 2px); opacity: 0.8; }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+/* Stripe shimmer */
+@keyframes stripe-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.stripe-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-blue) 0%,
+    var(--color-blue) 30%,
+    #66ccff 50%,
+    var(--color-blue) 70%,
+    var(--color-blue) 100%
+  );
+  background-size: 200% 100%;
+  animation: stripe-shimmer 6s linear infinite;
+}
+
+/* Pixel particle */
+.pixel-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  pointer-events: none;
+  z-index: 9998;
+  image-rendering: pixelated;
+}
