@@ -1,11 +1,34 @@
+import { useState, useEffect, useRef } from 'react'
+
 export function Nav() {
+  const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastScroll = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 50)
+      setHidden(y > 200 && y > lastScroll.current)
+      lastScroll.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-100 px-6 py-3 flex items-center justify-between bg-black border-b-4 border-blue shadow-[0_4px_0_var(--color-blue-dark)] relative">
+    <nav className={`fixed left-0 right-0 z-100 px-6 flex items-center justify-between border-b-4 border-blue transition-all duration-300 ${
+      hidden ? '-top-20' : 'top-0'
+    } ${
+      scrolled
+        ? 'py-2 bg-black/95 backdrop-blur-sm shadow-[0_4px_12px_rgba(0,153,255,0.3)]'
+        : 'py-3 bg-black shadow-[0_4px_0_var(--color-blue-dark)]'
+    }`}>
       {/* Orange sweep accents on nav corners */}
-      <div className="absolute bottom-0 left-0 w-5 h-[4px] bg-orange" />
-      <div className="absolute bottom-0 right-0 w-5 h-[4px] bg-orange" />
+      <div className={`absolute bottom-0 left-0 h-[4px] bg-orange transition-all duration-300 ${scrolled ? 'w-8' : 'w-5'}`} />
+      <div className={`absolute bottom-0 right-0 h-[4px] bg-orange transition-all duration-300 ${scrolled ? 'w-8' : 'w-5'}`} />
       <div className="font-pixel text-[0.75rem] text-orange flex items-center gap-3" style={{ textShadow: '2px 2px 0 #8b1a1a' }}>
-        <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none">
+        <svg className={`transition-all duration-300 ${scrolled ? 'w-5 h-5' : 'w-6 h-6'}`} viewBox="0 0 32 32" fill="none">
           {/* Mast - red */}
           <rect x="11" y="4" width="1" height="17" fill="#8b1a1a" />
           {/* Sail - triangle pointing right */}
