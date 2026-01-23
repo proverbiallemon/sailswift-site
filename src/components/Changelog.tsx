@@ -10,6 +10,19 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    version: 'v1.1.3',
+    date: '2026-01-23',
+    subtitle: 'New app icon',
+    sections: [
+      {
+        title: 'Added',
+        items: [
+          'Updated app icon to retro 16-bit pixel sailboat',
+        ],
+      },
+    ],
+  },
+  {
     version: 'v1.1.2',
     date: '2026-01-21',
     subtitle: 'UI improvements and bug fixes',
