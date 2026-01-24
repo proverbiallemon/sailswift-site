@@ -230,6 +230,8 @@ const SECTION_COLORS: Record<string, string> = {
 
 export function Changelog() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set([CHANGELOG[0].version]))
+  const [showAll, setShowAll] = useState(false)
+  const visibleEntries = showAll ? CHANGELOG : CHANGELOG.slice(0, 4)
 
   const toggle = (version: string) => {
     setExpanded(prev => {
@@ -263,7 +265,7 @@ export function Changelog() {
       </motion.p>
 
       <div className="flex flex-col gap-2">
-        {CHANGELOG.map((entry, i) => (
+        {visibleEntries.map((entry, i) => (
           <motion.div
             key={entry.version}
             className="pixel-raised bg-dark overflow-hidden"
@@ -328,6 +330,15 @@ export function Changelog() {
           </motion.div>
         ))}
       </div>
+
+      {!showAll && CHANGELOG.length > 4 && (
+        <button
+          onClick={() => setShowAll(true)}
+          className="mt-4 mx-auto block font-pixel text-[0.45rem] text-blue/70 border border-blue/30 px-4 py-2 rounded-sm hover:text-blue hover:border-blue transition-colors cursor-pointer"
+        >
+          SHOW {CHANGELOG.length - 4} OLDER RELEASES
+        </button>
+      )}
 
     </section>
   )

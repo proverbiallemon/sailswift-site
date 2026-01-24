@@ -83,7 +83,7 @@ export function PixelBoat() {
         ref={canvasRef}
         width={32}
         height={32}
-        className="w-40 h-40"
+        className="w-48 h-48 sm:w-40 sm:h-40"
       />
     </div>
   )

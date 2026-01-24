@@ -1,10 +1,30 @@
+import { useState } from 'react'
 import { motion } from 'motion/react'
+
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="font-pixel text-[0.35rem] px-2 py-1 text-blue/70 border border-blue/30 rounded-sm hover:text-blue hover:border-blue transition-colors cursor-pointer shrink-0"
+    >
+      {copied ? 'COPIED!' : 'COPY'}
+    </button>
+  )
+}
 
 export function Install() {
   return (
     <section id="install" className="py-24 px-6 text-center">
       <motion.div
-        className="max-w-[600px] mx-auto p-8 pixel-orange bg-dark"
+        className="max-w-[600px] mx-auto p-8 pixel-orange bg-dark shadow-[0_0_30px_rgba(255,140,0,0.08)]"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -36,9 +56,10 @@ export function Install() {
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <span className="font-pixel text-[0.45rem] text-blue min-w-[90px]">HOMEBREW</span>
-            <code className="font-terminal text-orange text-[1.1rem] break-all">
+            <code className="font-terminal text-orange text-[1.1rem] break-all flex-1">
               brew tap PocketBearDev/sailswift && brew install --cask sailswift
             </code>
+            <CopyButton text="brew tap PocketBearDev/sailswift && brew install --cask sailswift" />
           </motion.div>
 
           <motion.div
@@ -49,9 +70,10 @@ export function Install() {
             transition={{ duration: 0.4, delay: 0.3 }}
           >
             <span className="font-pixel text-[0.45rem] text-blue min-w-[90px]">SOURCE</span>
-            <code className="font-terminal text-orange text-[1.1rem] break-all">
+            <code className="font-terminal text-orange text-[1.1rem] break-all flex-1">
               git clone https://github.com/proverbiallemon/Sailswift.git
             </code>
+            <CopyButton text="git clone https://github.com/proverbiallemon/Sailswift.git" />
           </motion.div>
         </div>
       </motion.div>

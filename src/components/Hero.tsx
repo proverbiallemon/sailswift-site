@@ -5,7 +5,7 @@ import { AppMockup } from './AppMockup'
 import { BlueStripes } from './BlueStripes'
 
 // you're still reading this? go mod something
-const TYPED_TEXT = 'Browse, download, and manage Ship of Harkinian mods with one click. Profiles, load order, and auto-updates. Built with Swift for Mac.'
+const TYPED_TEXT = '1-click mods for Ship of Harkinian. Profiles, load order, auto-updates. Native Mac app.'
 
 export function Hero() {
   const [displayText, setDisplayText] = useState('')
@@ -64,7 +64,7 @@ export function Hero() {
         NATIVE macOS MOD MANAGER<br />FOR SHIP OF HARKINIAN
       </motion.p>
 
-      <p className="text-[1.4rem] text-retro-gray max-w-[600px] mb-12 leading-relaxed min-h-[4.5rem]">
+      <p className="text-[1.4rem] text-retro-gray max-w-[600px] mb-12 leading-relaxed min-h-[2.5rem]">
         {displayText}
         <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>_</span>
       </p>
@@ -83,6 +83,7 @@ export function Hero() {
           style={{ textShadow: '1px 1px 0 #8b1a1a' }}
         >
           DOWNLOAD
+          <span className="font-terminal text-[0.55rem] opacity-60 -ml-1">via GameBanana</span>
         </a>
         <a
           href="https://github.com/proverbiallemon/Sailswift"
@@ -92,6 +93,17 @@ export function Hero() {
         >
           VIEW SOURCE
         </a>
+      </motion.div>
+
+      <motion.div
+        className="flex flex-wrap gap-3 justify-center mb-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.1 }}
+      >
+        <span className="font-pixel text-[0.35rem] text-[#28c840]/80 border border-[#28c840]/30 px-2 py-1 rounded-sm">FREE & OPEN SOURCE</span>
+        <span className="font-pixel text-[0.35rem] text-blue/80 border border-blue/30 px-2 py-1 rounded-sm">macOS NATIVE</span>
+        <span className="font-pixel text-[0.35rem] text-orange/80 border border-orange/30 px-2 py-1 rounded-sm">SWIFT & SWIFTUI</span>
       </motion.div>
 
       <motion.div
