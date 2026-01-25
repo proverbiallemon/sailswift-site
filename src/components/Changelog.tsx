@@ -11,6 +11,29 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    version: 'v1.1.4',
+    date: '2026-01-24',
+    subtitle: 'Mod updates and pixel UI',
+    sections: [
+      {
+        title: 'Added',
+        items: [
+          'Mod Update Action — Click the orange Update badge to download latest version in-place',
+          'Folder Context Menu — Right-click folders for Update Mod and Show in Finder',
+          'Pixel Art UI — Retro pixel icons for action bar buttons and pixel boat branding',
+        ],
+      },
+      {
+        title: 'Fixed',
+        items: [
+          'Re-downloading a mod no longer creates duplicate files with _1 suffix',
+          'Browse thumbnails no longer stretch with extreme aspect ratio images',
+          'Download speeds now match browser speeds',
+        ],
+      },
+    ],
+  },
+  {
     version: 'v1.1.2',
     date: '2026-01-21',
     subtitle: 'UI improvements and bug fixes',
