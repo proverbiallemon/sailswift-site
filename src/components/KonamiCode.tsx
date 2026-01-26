@@ -147,7 +147,6 @@ function playSecretFanfare() {
 
 export function KonamiCode() {
   const [inputSequence, setInputSequence] = useState<string[]>([])
-  const [activated, setActivated] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   const [itemIndex, setItemIndex] = useState(0)
 
@@ -167,7 +166,6 @@ export function KonamiCode() {
     if (newSequence.length === KONAMI_CODE.length &&
         newSequence.every((k, i) => k === KONAMI_CODE[i])) {
       setItemIndex(Math.floor(Math.random() * ZELDA_ITEMS.length))
-      setActivated(true)
       setShowMessage(true)
       playSecretFanfare()
 
