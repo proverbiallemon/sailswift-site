@@ -314,7 +314,7 @@ export function Changelog() {
               <span className="text-retro-gray text-[0.9rem] flex-1">{entry.subtitle}</span>
               <span className="text-retro-gray/50 text-[0.8rem] hidden sm:block">{entry.date}</span>
               {i === 0 && (
-                <span className="font-pixel text-[0.35rem] text-[#28c840] border border-[#28c840]/50 px-1.5 py-0.5 rounded-sm">
+                <span className="font-pixel text-[0.35rem] text-[#28c840] border border-[#28c840]/50 px-1.5 py-0.5 rounded-sm badge-pulse">
                   LATEST
                 </span>
               )}

@@ -82,6 +82,10 @@ export function Nav() {
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener' : undefined}
+              onClick={link.external ? undefined : (e) => {
+                e.preventDefault()
+                document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+              }}
               className="font-pixel text-[0.55rem] text-retro-white px-3.5 py-2 border-2 border-transparent hover:text-orange hover:border-orange transition-all"
             >
               {link.label}
@@ -117,7 +121,13 @@ export function Nav() {
                 href={link.href}
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener' : undefined}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  setMenuOpen(false)
+                  if (!link.external) {
+                    e.preventDefault()
+                    document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
                 className="font-pixel text-[1rem] text-retro-white no-underline px-6 py-3 border-2 border-transparent hover:text-orange hover:border-orange transition-colors"
                 style={{ textShadow: '2px 2px 0 #0066cc' }}
                 initial={{ opacity: 0, y: 20 }}

@@ -10,10 +10,17 @@ import { Install } from './components/Install'
 import { Footer } from './components/Footer'
 import { PixelCursor } from './components/PixelCursor'
 import { AnimatedFavicon } from './components/AnimatedFavicon'
+import { ParticleBackground } from './components/ParticleBackground'
+import { BackToTop } from './components/BackToTop'
+import { BootSequence } from './components/BootSequence'
+import { KonamiCode } from './components/KonamiCode'
 
 function App() {
   return (
     <>
+      <BootSequence />
+      <KonamiCode />
+      <ParticleBackground />
       <AnimatedFavicon />
       <PixelCursor />
       <Nav />
@@ -26,6 +33,7 @@ function App() {
       <FAQ />
       <Install />
       <Footer />
+      <BackToTop />
     </>
   )
 }

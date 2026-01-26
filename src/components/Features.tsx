@@ -1,35 +1,42 @@
-import { Download, Search, Users, List, RefreshCw, Shield } from 'lucide-react'
 import { motion } from 'motion/react'
 import { BlueStripes } from './BlueStripes'
+import {
+  PixelDownload,
+  PixelSearch,
+  PixelUsers,
+  PixelList,
+  PixelRefresh,
+  PixelShield,
+} from './PixelIcons'
 
 const FEATURES = [
   {
-    icon: Download,
+    icon: PixelDownload,
     title: '1-CLICK INSTALL',
     desc: 'Click any mod on GameBanana and it downloads + installs automatically. ZIP, 7z, and RAR supported.',
   },
   {
-    icon: Search,
+    icon: PixelSearch,
     title: 'BROWSE GAMEBANANA',
     desc: 'Search and browse the full SoH mod catalog without leaving the app.',
   },
   {
-    icon: Users,
+    icon: PixelUsers,
     title: 'PROFILES & MODPACKS',
     desc: 'Save mod setups as profiles. Share modpacks with friends and apply them instantly.',
   },
   {
-    icon: List,
+    icon: PixelList,
     title: 'LOAD ORDER',
     desc: 'Set mod priority. Later in list overrides earlier. Full control over conflicts.',
   },
   {
-    icon: RefreshCw,
+    icon: PixelRefresh,
     title: 'AUTO-UPDATES',
     desc: 'Sailswift updates itself via Sparkle. Always on the latest version.',
   },
   {
-    icon: Shield,
+    icon: PixelShield,
     title: 'SAFE & VERIFIED',
     desc: 'MD5 checksums on every download. Zip-slip and symlink protection built in.',
   },
@@ -68,8 +75,8 @@ export function Features() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: i * 0.1, ease: 'easeOut' }}
           >
-            <div className="feature-icon-box w-8 h-8 bg-blue flex items-center justify-center mb-3">
-              <feature.icon size={16} className="text-retro-white" />
+            <div className="feature-icon-box w-10 h-10 bg-blue flex items-center justify-center mb-3">
+              <feature.icon size={20} className="text-retro-white" />
             </div>
             <h3 className={`font-pixel text-[0.6rem] mb-3 leading-relaxed ${i % 2 === 0 ? 'text-red-light' : 'text-orange'}`}>
               {feature.title}
