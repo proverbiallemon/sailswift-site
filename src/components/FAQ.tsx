@@ -32,7 +32,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-20 px-6 max-w-[700px] mx-auto">
+    <section id="faq" className="py-20 px-6 max-w-[700px] mx-auto">
       <motion.h2
         className="font-pixel text-[clamp(0.8rem,2vw,1.1rem)] text-center mb-12"
         style={{ textShadow: '2px 2px 0 #8b1a1a' }}

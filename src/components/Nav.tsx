@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react'
 const NAV_LINKS = [
   { href: '#features', label: 'FEATURES' },
   { href: '#changelog', label: 'CHANGELOG' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#install', label: 'INSTALL' },
   { href: 'https://github.com/proverbiallemon/Sailswift', label: 'SOURCE', external: true },
 ]
