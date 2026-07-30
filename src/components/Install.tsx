@@ -57,9 +57,9 @@ export function Install() {
           >
             <span className="font-pixel text-[0.45rem] text-blue min-w-[90px]">HOMEBREW</span>
             <code className="font-terminal text-orange text-[1.1rem] break-all flex-1">
-              brew tap PocketBearDev/sailswift && brew install --cask sailswift
+              brew trust --cask pocketbeardev/sailswift/sailswift && brew install --cask pocketbeardev/sailswift/sailswift
             </code>
-            <CopyButton text="brew tap PocketBearDev/sailswift && brew install --cask sailswift" />
+            <CopyButton text="brew trust --cask pocketbeardev/sailswift/sailswift && brew install --cask pocketbeardev/sailswift/sailswift" />
           </motion.div>
 
           <motion.div
