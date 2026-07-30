@@ -11,6 +11,42 @@ interface ChangelogEntry {
 
 const CHANGELOG: ChangelogEntry[] = [
   {
+    version: 'v1.1.5',
+    date: '2026-07-30',
+    subtitle: 'Signed, notarized, and settings-safe',
+    sections: [
+      {
+        title: 'Important Fix',
+        items: [
+          'Game Settings Preservation — Sailswift no longer resets your Ship of Harkinian settings. Earlier versions unintentionally wiped controller bindings, enhancements, and randomizer settings whenever mods changed. Reconfigure once; they stick from now on.',
+        ],
+      },
+      {
+        title: 'Added',
+        items: [
+          'Signed & Notarized — Releases carry a Developer ID signature and Apple notarization. No Gatekeeper warnings, no right-click-to-open.',
+          'Partial Catalog Indicator — Browse tells you when GameBanana pages failed to load instead of silently showing an incomplete list',
+        ],
+      },
+      {
+        title: 'Fixed',
+        items: [
+          'Load order no longer shows duplicate entries with wrong position numbers',
+          'Failed mod updates no longer report success or clear the update badge',
+          'Modpack import counts now reflect what actually installed',
+          'One-click installs now work for Texture, Model, Map, Spray, and Gui items',
+          'Large downloads no longer spike memory during checksum verification',
+        ],
+      },
+      {
+        title: 'Security',
+        items: [
+          'Archives are checked for unsafe paths before extraction, not after',
+        ],
+      },
+    ],
+  },
+  {
     version: 'v1.1.4',
     date: '2026-01-24',
     subtitle: 'Mod updates and pixel UI',
