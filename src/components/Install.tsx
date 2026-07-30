@@ -56,7 +56,7 @@ export function Install() {
             transition={{ duration: 0.4, delay: 0.2 }}
           >
             <span className="font-pixel text-[0.45rem] text-blue min-w-[90px]">HOMEBREW</span>
-            <code className="font-terminal text-orange text-[1.1rem] break-all flex-1">
+            <code className="font-terminal text-orange text-[1.1rem] break-all flex-1 select-all">
               brew trust --cask pocketbeardev/sailswift/sailswift && brew install --cask pocketbeardev/sailswift/sailswift
             </code>
             <CopyButton text="brew trust --cask pocketbeardev/sailswift/sailswift && brew install --cask pocketbeardev/sailswift/sailswift" />
