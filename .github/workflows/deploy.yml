@@ -30,3 +30,22 @@ jobs:
 
       - name: Deployment URL
         run: echo "Deployed to ${{ steps.deploy.outputs.deployment-url }}"
+
+  deploy-manifest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cloudflare/wrangler-action@v3
+        id: deploy-manifest
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          preCommands: wrangler pages project create manifest-site --production-branch main || true
+          command: pages deploy manifest-site-page --project-name manifest-site
+
+      - name: Deployment URL
+        run: echo "Deployed to ${{ steps.deploy-manifest.outputs.deployment-url }}"
