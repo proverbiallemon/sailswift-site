@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { PixelBoat } from './PixelBoat'
 import { AppMockup } from './AppMockup'
 import { BlueStripes } from './BlueStripes'
+import { ManifestTearout } from './ManifestTearout'
 
 // you're still reading this? go mod something
 const TYPED_TEXT = '1-click mods for Ship of Harkinian. Profiles, load order, auto-updates. Native Mac app.'
@@ -34,6 +35,7 @@ export function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 pb-0 relative">
+      <ManifestTearout />
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
