@@ -90,12 +90,25 @@
   </div>
 
   <div class="dl-row">
-    <a class="dl primary" href="https://github.com/proverbiallemon/Manifest/releases">macOS .dmg</a>
-    <a class="dl" href="https://github.com/proverbiallemon/Manifest/releases">Windows setup.exe</a>
-    <a class="dl" href="https://github.com/proverbiallemon/Manifest/releases">Linux AppImage</a>
+    <a class="dl" data-os="mac" href="https://github.com/proverbiallemon/Manifest/releases/download/gui-latest/Manifest-universal.dmg">macOS .dmg</a>
+    <a class="dl" data-os="win" href="https://github.com/proverbiallemon/Manifest/releases/download/gui-latest/Manifest-setup.exe">Windows setup.exe</a>
+    <a class="dl" data-os="linux" href="https://github.com/proverbiallemon/Manifest/releases/download/gui-latest/Manifest.AppImage">Linux AppImage</a>
   </div>
   <div class="brew" title="select to copy">brew install --cask pocketbeardev/manifest/manifest</div>
-  <p class="fine">signed and notarized on macOS · keeps itself up to date · nothing is ever deleted</p>
+  <p class="fine">signed and notarized on macOS · keeps itself up to date · nothing is ever deleted<br>
+  <a href="https://github.com/proverbiallemon/Manifest/releases" style="color: var(--ink-faded)">all versions and formats (msi, deb, rpm)</a></p>
+  <script>
+    (function () {
+      var ua = navigator.userAgent;
+      var os = /Mac/.test(ua) ? "mac" : /Win/.test(ua) ? "win" : /Linux|X11/.test(ua) ? "linux" : null;
+      if (!os) return;
+      var btn = document.querySelector('.dl[data-os="' + os + '"]');
+      if (btn) {
+        btn.classList.add("primary");
+        btn.textContent = btn.textContent + " ▸ for this vessel";
+      }
+    })();
+  </script>
 
   <hr class="thin-rule">
 
